@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}<title>Login</title>{% endblock title %}
+{% block style %}
+    <style>
+    body {
+        background: #eee
+    }
+
+    h1 {
+        text-align: center
+    }
+
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+        border-radius: 10px;
+        -webkit-appearance: none;
+    }
+
+    .tab input:focus{
+
+      border:1px solid #6a1b9a !important;
+      outline: none;
+    }
+
+    input.invalid {
+
+        border:1px solid #e03a0666;
+    }
+
+    button {
+        background-color: #6A1B9A;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer
+    }
+
+    button:hover {
+        opacity: 0.8
+    }
+
+    button:focus{
+
+      outline: none !important;
+    }
+    </style>
+{% endblock style %}
+{% block content %}
+
+    <div class="bradcam_area bradcam_bg_3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Log In</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="container mt-5">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-md-8">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p}}
+                                <p>.</p>
+                                <button class="btn btn-success  btn-lg  pt-lg-2 btn-block">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
