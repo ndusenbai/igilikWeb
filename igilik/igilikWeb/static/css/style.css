@@ -5407,7 +5407,7 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 .bradcam_area {
   background-size: cover;
   background-position: center center;
-  padding: 250px 0 178px 0;
+  padding: 100px 0 178px 0;
   background-repeat: no-repeat;
   position: relative;
   z-index: 0;
@@ -5416,7 +5416,7 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 13, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_bradcam.scss */
   .bradcam_area {
-    padding: 120px 0;
+    padding: 100px 0;
   }
 }
 
@@ -5436,13 +5436,13 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 @media (max-width: 767px) {
   /* line 13, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_bradcam.scss */
   .bradcam_area {
-    padding: 150px 0;
+    padding: 100px 0;
   }
 }
 
 /* line 37, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_bradcam.scss */
 .bradcam_area h3 {
-  font-size: 60px;
+  font-size: 40px;
   color: #fff;
   font-weight: 500;
   margin-bottom: 0;
@@ -5501,21 +5501,21 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 @media (max-width: 767px) {
   /* line 72, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_bradcam.scss */
   .bradcam_area.Extra_padding {
-    padding: 150px 0;
+    padding: 80px 0;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 72, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_bradcam.scss */
   .bradcam_area.Extra_padding {
-    padding: 150px 0;
+    padding: 90px 0;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 72, ../../Arafath/CL/Cl November/224. Interior Design/HTML/scss/_bradcam.scss */
   .bradcam_area.Extra_padding {
-    padding: 150px 0;
+    padding: 100px 0;
   }
 }
 

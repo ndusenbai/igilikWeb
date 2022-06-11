@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>Profile</title>{% endblock %}
+{% block style %}
+<style>
+    .profile-header {
+        transform: translateY(5rem);
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1 px-3 pt-60 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9">
+                    <div class="bradcam_text">
+                        <h3>My Profile</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media align-items-end profile-header">
+                <div class="profile mr-5">
+                    <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="..." width="200" class="rounded img-thumbnail">
+                    <a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a>
+                </div>
+                <div class="media-body mb-5 text-white">
+                    <p class="small mb-4">Username:<a href="#" class="text-light"> ndusenbay</a></p>
+                    <p class="small mb-4">Gmail:<a href="#" class="text-light"> ndusenbai@gamil.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="bg-light p-4">
+        <div class="d-grid container" style="font-size:5em;
+                                              width:100%;
+                                              cursor: pointer;">
+            <ul class="list-inline mb-2 text-center">
+                <li class="list-inline-item ">
+                    <h3 class="font-weight-bold mb-2 d-block">My blog</h3>
+                </li>
+            </ul>
+            <a href="{% url 'myBlog' %}">
+                <span class="linkSpanner"  style="position:absolute;
+                                                  width:100%;
+                                                  height:100%;
+                                                  top:0;
+                                                  left: 0;
+                                                  z-index: 1;"></span>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="py-4 px-4">
+        <div class="py-4">
+            <h5 class="mb-3">Recent posts</h5>
+            <div class="p-4 bg-light rounded shadow-sm">
+                <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                <ul class="list-inline small text-muted mt-3 mb-0">
+                    <li class="list-inline-item"><i class="fa fa-comment-o mr-2"></i>12 Comments</li>
+                    <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200 Likes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+
+{% endblock %}

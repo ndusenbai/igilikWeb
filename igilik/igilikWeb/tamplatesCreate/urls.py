@@ -7,6 +7,8 @@ urlpatterns = [
     path('singleNews', SingleNewsView.as_view(), name='singleNews'),
     path('blog', BlogView.as_view(), name='blog'),
     path('singleBlog', SingleBlogView.as_view(), name='singleBlog'),
+    path('myBlog', MyBlogView.as_view(), name='myBlog'),
     path('about', AboutView.as_view(), name='about'),
     path('contact', ContactView.as_view(), name='contact'),
+    path('profile', ProfileView.as_view(), name='profile'),
 ]

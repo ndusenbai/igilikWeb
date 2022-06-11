@@ -21,3 +21,9 @@ class SingleBlogView(generic.TemplateView):
 
 class ContactView(generic.TemplateView):
     template_name = 'templatesCreate/Contact.html'
+
+class ProfileView(generic.TemplateView):
+    template_name = 'registration/profile.html'
+
+class MyBlogView(generic.TemplateView):
+    template_name = 'templatesCreate/my_blog.html'
