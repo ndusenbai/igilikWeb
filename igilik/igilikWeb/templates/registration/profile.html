@@ -11,28 +11,33 @@
 {% block content %}
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1 px-3 pt-60 pb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9">
-                    <div class="bradcam_text">
-                        <h3>My Profile</h3>
+    {% if user.is_authenticated %}
+        <div class="bradcam_area bradcam_bg_1 px-3 pt-60 pb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text">
+                            <h3>My Profile</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media align-items-end profile-header">
+                    <div class="profile mr-5">
+                        <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="..." width="200" class="rounded img-thumbnail">
+                        <a href="{% url 'edit_profile' %}" class="btn btn-dark btn-sm btn-block">Edit profile</a>
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <p class="small mb-4">Username:<a href="#" class="text-light">{% firstof request.user.get_full_name request.user.username %}</a></p>
+                        <p class="small mb-4">Gmail:<a href="#" class="text-light">{% firstof request.user.email request.user.username %}</a></p>
                     </div>
                 </div>
             </div>
-
-            <div class="media align-items-end profile-header">
-                <div class="profile mr-5">
-                    <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="..." width="200" class="rounded img-thumbnail">
-                    <a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a>
-                </div>
-                <div class="media-body mb-5 text-white">
-                    <p class="small mb-4">Username:<a href="#" class="text-light"> ndusenbay</a></p>
-                    <p class="small mb-4">Gmail:<a href="#" class="text-light"> ndusenbai@gamil.com</a></p>
-                </div>
-            </div>
         </div>
-    </div>
+    {% else %}
+        <p class="small mb-4">Username:<a href="#" class="text-light">you don't is authenticated</a></p>
+    {% endif %}
+
     <!--/ bradcam_area  -->
 
     <div class="bg-light p-4">
@@ -41,17 +46,12 @@
                                               cursor: pointer;">
             <ul class="list-inline mb-2 text-center">
                 <li class="list-inline-item ">
-                    <h3 class="font-weight-bold mb-2 d-block">My blog</h3>
+                    <h3 class="font-weight-bold mb-2 d-block" href="{% url 'myBlog' %}">
+                        <a href="{% url 'myBlog' %}">My blog</a>
+                    </h3>
                 </li>
             </ul>
-            <a href="{% url 'myBlog' %}">
-                <span class="linkSpanner"  style="position:absolute;
-                                                  width:100%;
-                                                  height:100%;
-                                                  top:0;
-                                                  left: 0;
-                                                  z-index: 1;"></span>
-            </a>
+
         </div>
     </div>
 
