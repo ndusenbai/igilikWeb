@@ -9,8 +9,9 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center bradcam_text2">
-                        <h3>White Blocks House</h3>
-                        <p>12 Sep, 2019 |  New York</p>
+                        <h3>{{ post.title }}</h3>
+                        <h3>{{ post.data }}</h3>
+                        <p>{{ post.time_create }} |  Kazakhstan</p>
                     </div>
                 </div>
             </div>
@@ -24,9 +25,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <p class="large_text text-center">
-                        “Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor 
-                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque. 
-                        Fusce ac mattis nulla. Morbi eget ornare dui. 
+                        {{ post.title }}
                     </p>
                 </div>
             </div>
@@ -35,8 +34,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-md-12">
                             <div class="details_info_wrap">
-                                <p>It esteems luckily or picture placing drawing. Apartments frequently or motionless on reasonable sed do eiusmod tempor inciunt ut labore et dolore magna.</p>
-                                <p>Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing. Apartments today frequently or motionless on reasonable sed do eiusmod date tempor inciunt ut labore et dolore magna liqua.abore et dolore incididunt ut labore et dolore.</p>
+                                {{ post.content}}
                             </div>
                         </div>
                         
@@ -57,7 +55,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     <!-- project_details_area end  -->

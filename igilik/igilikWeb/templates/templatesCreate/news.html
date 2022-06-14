@@ -27,82 +27,74 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-lg-7 col-md-6">
-                    <div class="thumb">
-                        <img src="{% static 'img/works/1.png' %}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6">
-                    <div class="work_info pl-68">
-                        <h3>White Blocks House</h3>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit duis sed odio sit amet </p>
-                        <a href="project_details.html" class="boxed-btn3-line">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-lg-5 col-md-6">
-                    <div class="work_info">
-                        <h3>Art Gallery Design</h3>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit duis sed odio sit amet </p>
-                        <a href="project_details.html" class="boxed-btn3-line">Details</a>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                        <div class="thumb">
-                            <img src="{% static 'img/works/2.png' %}" alt="">
+
+            {% for post in object_list %}
+                {% if post.singleType_id == 1 and post.is_published == 1 %}
+                    {% if post.id|divisibleby:2 %}
+                        <div class="row align-items-center mb-80">
+                            <div class="col-lg-7 col-md-6">
+                                <div class="thumb">
+                                    <img src="{% static 'img/works/1.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-6">
+                                <div class="work_info pl-68">
+                                    <h3>{{ post.title }}</h3>
+                                    <p>{{ post.content|slice:":210" }}...</p>
+                                    <a href="singleNews/{{ post.id }}" class="boxed-btn3-line">Details</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-            </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-lg-7 col-md-6">
-                    <div class="thumb">
-                        <img src="{% static 'img/works/3.png' %}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6">
-                    <div class="work_info pl-68">
-                        <h3>Art Gallery Design</h3>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit duis sed odio sit amet </p>
-                        <a href="project_details.html" class="boxed-btn3-line">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-lg-5 col-md-6">
-                    <div class="work_info">
-                        <h3>Office Space</h3>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit duis sed odio sit amet </p>
-                        <a href="project_details.html" class="boxed-btn3-line">Details</a>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                        <div class="thumb">
-                            <img src="{% static 'img/works/4.png' %}" alt="">
+                    {% else %}
+                        <div class="row align-items-center mb-80">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="work_info">
+                                    <h3>{{ post.title }}</h3>
+                                    <p>{{ post.content|slice:":210" }}...</p>
+                                    <a href="singleNews/{{ post.id }}" class="boxed-btn3-line">Details</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-6">
+                                <div class="thumb">
+                                    <img src="{% static 'img/works/2.png' %}" alt="">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-            </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
             <nav class="blog-pagination justify-content-center d-flex">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                {% if is_paginated %}
+                    <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{page_obj.previous_page_number}}">&laquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    {% endif %} {% for i in paginator.page_range %} {% if page_obj.number == i %}
+                    <li class="page-item">
+                        <a class="page-link active">{{ i }}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endif %} {% endfor %} {% if page_obj.has_next %}
+                    <li class="page-item">
+                      <a href="?page={{page_obj.next_page_number}}" class="page-link">&raquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                      <a class="page-link">&raquo;</a>
+                    </li>
+                    {% endif %}
+                    </ul>
+                {% endif %}
+            </nav>
         </div>
     </div>
     <!--/ works_area-end  -->
