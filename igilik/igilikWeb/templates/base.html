@@ -59,20 +59,20 @@
                                             <li><a href="{% url 'contact' %}">contact</a></li>
 
                                             {% if user.is_authenticated %}
-                                            <li><a href="#">profil <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                        <li><a href="{% url 'profile' %}">My Profil</a></li>
-                                                        <li><a href="{% url 'myBlog' %}">My Blog</a></li>
-                                                        <li><a href="{% url 'logout' %}">Log Out</a></li>
-                                                </ul>
-                                            </li>
+                                                <li><a href="#">profil <i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                            <li><a href="{% url 'profile' %}">My Profil</a></li>
+                                                            <li><a href="{% url 'myBlog' %}">My Blog</a></li>
+                                                            <li><a href="{% url 'logout' %}">Log Out</a></li>
+                                                    </ul>
+                                                </li>
                                             {% else %}
-                                            <li><a href="#">autherzation <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% url 'login' %}">Log In</a></li>
-                                                    <li><a href="{% url 'register' %}">Sign Up</a></li>
-                                                </ul>
-                                            </li>
+                                                <li><a href="#">autherzation <i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                        <li><a href="{% url 'login' %}">Log In</a></li>
+                                                        <li><a href="{% url 'register' %}">Sign Up</a></li>
+                                                    </ul>
+                                                </li>
                                             {% endif %}
 
                                         </ul>
@@ -88,7 +88,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

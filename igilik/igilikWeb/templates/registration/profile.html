@@ -9,9 +9,9 @@
 </style>
 {% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
 
     <!-- bradcam_area  -->
-    {% if user.is_authenticated %}
         <div class="bradcam_area bradcam_bg_1 px-3 pt-60 pb-3">
             <div class="container">
                 <div class="row">
@@ -28,49 +28,54 @@
                         <a href="{% url 'edit_profile' %}" class="btn btn-dark btn-sm btn-block">Edit profile</a>
                     </div>
                     <div class="media-body mb-5 text-white">
-                        <p class="small mb-4">Username:<a href="#" class="text-light">{% firstof request.user.get_full_name request.user.username %}</a></p>
-                        <p class="small mb-4">Gmail:<a href="#" class="text-light">{% firstof request.user.email request.user.username %}</a></p>
+                        <p class="small mb-4">Username:<a href="#" class="text-light">{% firstof request.user.username %}</a></p>
+                        <p class="small mb-4">Gmail:<a href="#" class="text-light">{% firstof request.user.email  %}</a></p>
                     </div>
                 </div>
             </div>
         </div>
-    {% else %}
-        <p class="small mb-4">Username:<a href="#" class="text-light">you don't is authenticated</a></p>
-    {% endif %}
-
     <!--/ bradcam_area  -->
 
-    <div class="bg-light p-4">
+    <div class="bg-light p-2">
         <div class="d-grid container" style="font-size:5em;
                                               width:100%;
                                               cursor: pointer;">
             <ul class="list-inline mb-2 text-center">
                 <li class="list-inline-item ">
                     <h3 class="font-weight-bold mb-2 d-block" href="{% url 'myBlog' %}">
-                        <a href="{% url 'myBlog' %}">My blog</a>
+                        <a class="btn btn-outline-secondary btn-lg  pt-lg-2 btn-block" href="{% url 'myBlog' %}">My blog</a>
                     </h3>
                 </li>
             </ul>
+        </div>
+    </div>
 
+    <div class="bg-light p-2">
+        <div class="d-grid container" style="font-size:5em;
+                                              width:100%;
+                                              cursor: pointer;">
+            <ul class="list-inline mb-2 text-center">
+                <li class="list-inline-item ">
+                    <h3 class="font-weight-bold mb-2 d-block" href="{% url 'myBlog' %}">
+                        <a class="btn btn-outline-secondary btn-lg  pt-lg-2 btn-block" href="#">Add blog</a>
+                    </h3>
+                </li>
+            </ul>
         </div>
     </div>
 
 
     <div class="py-4 px-4">
         <div class="py-4">
-            <h5 class="mb-3">Recent posts</h5>
+            <h5 class="mb-3">My quote</h5>
             <div class="p-4 bg-light rounded shadow-sm">
                 <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                <ul class="list-inline small text-muted mt-3 mb-0">
-                    <li class="list-inline-item"><i class="fa fa-comment-o mr-2"></i>12 Comments</li>
-                    <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200 Likes</li>
-                </ul>
             </div>
         </div>
     </div>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+{% else %}
+    <p class="small mb-4">Username:<a href="#" class="text-light">you don't is authenticated</a></p>
+{% endif %}
 
 {% endblock %}

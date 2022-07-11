@@ -12,7 +12,7 @@
                                 <div class="col-xl-9 col-md-9">
                                     <div class="slider_text">
                                         <h3>Igilik qogamdyk qory</h3>
-                                        <a href="#" class="boxed-btn3">Біз жайлы</a>
+                                        <a href="{% url "about" %}" class="boxed-btn3">About our</a>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            {% for post in post_list %}
+            {% for post in data %}
                 {% if post.singleType_id == 1 and post.is_published == 1 %}
                     {% if post.id|divisibleby:2 %}
                         <div class="row align-items-center mb-80">

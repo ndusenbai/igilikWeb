@@ -69,28 +69,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="single_works">
-                        <div class="thumb">
-                            <img src="{% static 'img/details-img/1.png' %}" alt="">
-                        </div>
-                        <div class="works_info">
-                            <h3><a href="#">Office Space</a></h3>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="single_works">
-                        <div class="thumb">
-                            <img src="{% static 'img/details-img/2.png' %}" alt="">
-                        </div>
-                        <div class="works_info">
-                            <h3><a href="#">Office Space</a></h3>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet </p>
+                {% for item in data %}
+                    <div class="col-md-6">
+                        <div class="single_works">
+                            <div class="thumb">
+                                <img src="{% static 'img/details-img/1.png' %}" alt="">
+                            </div>
+                            <div class="works_info">
+                                <h3><a href="{% url "singleNews" item.id%}">{{ item.title }}</a></h3>
+                                <p>{{ item.content|slice:":210" }}...</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
