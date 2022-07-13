@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}<title>Register</title>{% endblock title %}
+{% block content %}
+
+    <div class="bradcam_area bradcam_bg_3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Update blog</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="container mt-5">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-md-8">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p}}
+                                <button class="btn btn-success  btn-lg  pt-lg-2 btn-block">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

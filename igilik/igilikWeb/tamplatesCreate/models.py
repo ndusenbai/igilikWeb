@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -9,8 +10,12 @@ class Post(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
-    singleType = models.ForeignKey('singleType', on_delete=models.PROTECT, null=True)
-    user = models.ForeignKey(User, verbose_name='Пользователь', null = True, on_delete=models.CASCADE)
+    singleType = models.ForeignKey('singleType', on_delete=models.PROTECT, null=True, default=2)
+    #image = models.ImageField(null=True, blank=True, upload_to='img')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('myBlog')
 
 
 class singleType(models.Model):

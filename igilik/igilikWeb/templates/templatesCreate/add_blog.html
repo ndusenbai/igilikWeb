@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}<title>Register</title>{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block content %}
+
+    <div class="bradcam_area bradcam_bg_3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Add blog...</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="container mt-5">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-md-8">
+                            <form method="post" >
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Title</label>
+                                    <input type="text" class="form-control" name="title" required>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="public">
+                                        <label class="form-check-label" for="gridCheck1">
+                                          Public
+                                        </label>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Content</label>
+                                    <textarea class="form-control" rows="7" name="text" required></textarea>
+                                </div>
+                                <button class="btn btn-success  btn-lg  pt-lg-2 btn-block">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

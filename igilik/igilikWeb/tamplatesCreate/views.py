@@ -1,12 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import request
+from django.http import request, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.db.models import Q
 from .models import *
 
-
+#done
 class HomeView(ListView):
     model = Post
     context_object_name = "data"
@@ -16,7 +17,7 @@ class HomeView(ListView):
         queryset = Post.objects.order_by('-time_create').filter(singleType=1)[:3]
         return queryset
 
-
+#done
 class NewsView(ListView):
     model = Post
     template_name = 'templatesCreate/news.html'
@@ -27,7 +28,7 @@ class NewsView(ListView):
         queryset = Post.objects.order_by('-time_create').filter(singleType=1)
         return queryset
 
-
+#done
 class SingleNewsView(DetailView):
     model = Post
     template_name = 'templatesCreate/single_news.html'
@@ -42,7 +43,7 @@ class SingleNewsView(DetailView):
         context['data'] = Post.objects.filter(~Q(id=(self.kwargs.get('pk')))).order_by('-id')[:2]
         return context
 
-
+#done
 class BlogView(ListView):
     model = Post
     context_object_name = "data"
@@ -63,7 +64,7 @@ class BlogView(ListView):
 class SingleBlogView(generic.TemplateView):
     template_name = 'templatesCreate/single_blog.html'
 
-
+#done
 class MyBlogView(ListView):
     model = Post
     context_object_name = "data"
@@ -73,6 +74,33 @@ class MyBlogView(ListView):
     def get_queryset(self):
         queryset = Post.objects.order_by('-time_create').filter(user = self.request.user.id)
         return queryset
+
+#done
+class AddBlog(ListView):
+    model = Post
+    template_name = "templatesCreate/add_blog.html"
+
+    def post(self, request, *args, **kwargs):
+        userInfo = self.request.user
+        titleInfo = self.request.POST['title']
+        textInfo = self.request.POST['text']
+        publicInfo = self.request.POST['public']
+
+        if publicInfo == str('on'):
+            publicInfo = True
+        else:
+            publicInfo = False
+
+        data = Post(title=titleInfo, content=textInfo, is_published=publicInfo, user=userInfo)
+        data.save()
+
+        return HttpResponseRedirect('/profile')
+
+
+class UpdataBlog(UpdateView):
+    model = Post
+    template_name = 'templatesCreate/update.html'
+    fields = ['title', 'content', 'is_published']
 
 class ContactView(generic.TemplateView):
     template_name = 'templatesCreate/Contact.html'
