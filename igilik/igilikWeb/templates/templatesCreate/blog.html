@@ -29,7 +29,7 @@
                             {% if item.singleType_id == 2 and item.is_published == 1 %}
                                 <article class="blog_item">
                                     <div class="blog_item_img">
-                                        <img class="card-img rounded-0" src="{% static 'img/blog/single_blog_3.png' %}" alt="">
+                                        <img class="card-img rounded-0" src="media/{{ item.image }}" alt="">
                                         <a href="{% url 'singleBlog' item.id %}" class="blog_item_date">
                                             <h3>{{ item.time_create| date:'d' }}</h3>
                                             <p>{{ item.time_create| date:'b' }}</p>
@@ -44,6 +44,11 @@
                                         <ul class="blog-info-link">
                                             <li><a href="{% url 'singleBlog' item.id %}"><i class="fa fa-user"></i> {{ item.user }}</a></li>
                                             <li><a href="{% url 'singleBlog' item.id %}"><i class="fa fa-comments"></i> Comments</a></li>
+                                            {% if user.is_authenticated %}
+                                                {% if user == item.user %}
+                                                    <li><a href="{% url 'updateBlog' item.pk %}"><i class="fa fa-edit"></i> Updata</a></li>
+                                                {% endif %}
+                                            {% endif %}
                                         </ul>
                                     </div>
                                 </article>
@@ -99,8 +104,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                <button class="button rounded-0 primary-bg text-black-50 w-100 btn_1 boxed-btn"
                                     type="submit">Search</button>
+                            </form>
+                        </aside>
+
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                <button name="myBlogs" value="myBlogs" class="button rounded-0 primary-bg text-black-50 w-100 btn_1 boxed-btn"
+                                    type="submit">My blogs</button>
                             </form>
                         </aside>
 

@@ -57,8 +57,15 @@ class BlogView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
         context['comments'] = Comments.objects.filter(~Q(id=(self.kwargs.get('pk')))).order_by('-id')[:2]
         return context
+
+    def post(self, request, *args, **kwargs):
+        queryset = Post.objects.all()
+        print(args)
+        print(kwargs)
+        return HttpResponseRedirect('/blog')
 
 
 class SingleBlogView(generic.TemplateView):
@@ -85,22 +92,24 @@ class AddBlog(ListView):
         titleInfo = self.request.POST['title']
         textInfo = self.request.POST['text']
         publicInfo = self.request.POST['public']
+        imageIngo = self.request.POST['image']
 
         if publicInfo == str('on'):
             publicInfo = True
         else:
             publicInfo = False
 
-        data = Post(title=titleInfo, content=textInfo, is_published=publicInfo, user=userInfo)
+        data = Post(title=titleInfo, content=textInfo, is_published=publicInfo, user=userInfo, image=imageIngo)
         data.save()
 
         return HttpResponseRedirect('/profile')
 
-
+#done
 class UpdataBlog(UpdateView):
     model = Post
     template_name = 'templatesCreate/update.html'
-    fields = ['title', 'content', 'is_published']
+    fields = ['title', 'content', 'is_published', 'image']
+
 
 class ContactView(generic.TemplateView):
     template_name = 'templatesCreate/Contact.html'

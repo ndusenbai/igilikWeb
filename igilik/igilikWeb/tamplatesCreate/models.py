@@ -11,11 +11,12 @@ class Post(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
     singleType = models.ForeignKey('singleType', on_delete=models.PROTECT, null=True, default=2)
-    #image = models.ImageField(null=True, blank=True, upload_to='img')
+    image = models.ImageField(null=True, blank=True, upload_to='img')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse('myBlog')
+
+        return reverse('blog')
 
 
 class singleType(models.Model):
